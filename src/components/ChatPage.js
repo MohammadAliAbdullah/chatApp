@@ -41,7 +41,7 @@ function ChatPage() {
                         <ComposeSideBar />
                     </div>
                 </div>
-                <Conversation />
+                <Conversation socket={socket} />
             </div>
         </div>
     )

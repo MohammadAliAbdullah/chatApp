@@ -1,20 +1,39 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import ChatPage from "./components/ChatPage";
 import Login from "./components/Login";
 import io from 'socket.io-client';
-const socket = io.connect('http://localhost:000');
+const socket = io.connect('http://localhost:8000');
+
+const routes = [
+    {
+        element: <ChatPage />,
+        children: [
+            {
+                path: "/chat",
+                element: <ChatPage />,
+                layout: "/admin",
+            }
+        ]
+    },
+    {
+      element: <Login />,
+      children: [
+          {
+              path: "/",
+              element: <Login />,
+              layout: "/",
+          }
+      ]
+  }
+]
 
 function App() {
+  const routers = createBrowserRouter(routes);
   return (
-    <BrowserRouter>
-      <div>
-        <Routes>
-          <Route path="/" element={<Login />}></Route>
-          <Route path="/chat" element={<ChatPage />}></Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <div>
+      <RouterProvider router={routers} />
+    </div>
   );
 }
 

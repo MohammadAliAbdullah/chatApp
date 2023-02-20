@@ -4,7 +4,7 @@ function SideBar({ socket }) {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        socket.on("newUserResponse", data => setUsers(data))
+        socket.on("newUserResponse", data => setUsers(data));
         console.log(users);
     }, [socket, users])
 
@@ -31,7 +31,7 @@ function SideBar({ socket }) {
                     </div>
                 </div>
             </div>
-            
+
             <div className="row sideBar">
                 {/* ======= */}
                 {users.map(user =>
