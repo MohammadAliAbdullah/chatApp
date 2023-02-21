@@ -20,7 +20,7 @@ function ChatBody({ messages, chatWindowRef }) {
                                     {message.text}
                                 </div>
                                 <span className="message-time pull-right">
-                                    Sun
+                                    {message.time}
                                 </span>
                             </div>
                         </div>
@@ -33,7 +33,7 @@ function ChatBody({ messages, chatWindowRef }) {
                                     {message.text}
                                 </div>
                                 <span className="message-time pull-right">
-                                    Sun
+                                    {message.time}
                                 </span>
                             </div>
                         </div>

@@ -1,21 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import io from 'socket.io-client';
 
-const ChatFooter = () => {
+const ChatFooter = ({}) => {
     const [socket, setSocket] = useState(null);
     const [message, setMessage] = useState("")
     // const handleTyping = () => socket.emit("typing", `${localStorage.getItem("userName")} is typing`)
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const now = new Date();
+        const formattedTime = now.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+        });
+
+        // const formattedDate = now.toLocaleDateString([], {
+        //     day: 'numeric',
+        //     month: 'short',
+        //     year: 'numeric',
+        // });
+        const formattedDate = `${now.getDate()} ${now.toLocaleDateString([], {
+            month: 'long'
+          })} ${now.getFullYear()}`;
+
+        // console.log(formattedDate);
         const data = {
             text: message,
             name: localStorage.getItem("userName"),
             id: `${socket.id}${Math.random()}`,
-            socketID: socket.id
+            socketID: socket.id,
+            date: formattedDate,
+            time: formattedTime,
         }
         if (message.trim() && localStorage.getItem("userName")) {
-            console.table(data)
+            // console.table(data)
             socket.emit("message", data)
         }
         setMessage("")
