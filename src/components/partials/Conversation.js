@@ -26,8 +26,7 @@ function Conversation({ socket }) {
                     </div>
                 </div>
                 <div className="col-sm-8 col-xs-7 heading-name">
-                    <a className="heading-name-meta">John Doe
-                    </a>
+                    <a className="heading-name-meta">Test</a>
                     <span className="heading-online">Online</span>
                 </div>
                 <div className="col-sm-1 col-xs-1  heading-dot pull-right">

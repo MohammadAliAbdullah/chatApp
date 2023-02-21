@@ -5,8 +5,9 @@ const server = require('http').Server(app);
 const env = require('dotenv').config();
 const PORT = process.env.PORT;
 const NODE_PORT = process.env.NODE_PORT;
+const allUsers = require('./database/users');
 // connetion server with socket io.
-
+// console.log(allUsers)
 const io = require('socket.io')(server, {
   cors: {
     origin: "http://localhost:" + PORT
@@ -18,6 +19,8 @@ users = [];
 // socket connection 
 io.on('connection', (socket) => {
   console.log(`⚡: ${socket.id} user just connected!`)
+
+  io.emit("allUsers", allUsers);
 
   socket.on("newUser", data => {
     users.push(data)

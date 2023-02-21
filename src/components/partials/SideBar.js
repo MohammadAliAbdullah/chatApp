@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 
 function SideBar({ socket }) {
-    const [users, setUsers] = useState([])
+    const [users, setUsers] = useState([]);
+    const [allUsers, setAllUsers] = useState('');
 
     useEffect(() => {
         socket.on("newUserResponse", data => setUsers(data));
-        console.log(users);
-    }, [socket, users])
+        socket.on("allUsers", data => setAllUsers(data));
+        console.log(allUsers);
+    }, [socket, users, allUsers])
 
     return (
         <div>
@@ -47,33 +49,32 @@ function SideBar({ socket }) {
                                     <span className="name-meta" key={user.socketID}>{user.userName}</span>
                                 </div>
                                 <div className="col-sm-4 col-xs-4 pull-right sideBar-time">
-                                    <span className="time-meta pull-right">18:18
-                                    </span>
+                                    <span className="time-meta pull-right">18:18</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 )}
                 {/* ======= */}
-                <div className="row sideBar-body">
-                    <div className="col-sm-3 col-xs-3 sideBar-avatar">
-                        <div className="avatar-icon">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" />
-                        </div>
-                    </div>
-                    <div className="col-sm-9 col-xs-9 sideBar-main">
-                        <div className="row">
-                            <div className="col-sm-8 col-xs-8 sideBar-name">
-                                <span className="name-meta">John Doe
-                                </span>
-                            </div>
-                            <div className="col-sm-4 col-xs-4 pull-right sideBar-time">
-                                <span className="time-meta pull-right">18:18
-                                </span>
+                {allUsers.map(user =>
+                    <div className="row sideBar-body">
+                        <div className="col-sm-3 col-xs-3 sideBar-avatar">
+                            <div className="avatar-icon">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" />
                             </div>
                         </div>
+                        <div className="col-sm-9 col-xs-9 sideBar-main">
+                            <div className="row">
+                                <div className="col-sm-8 col-xs-8 sideBar-name">
+                                    <span className="name-meta" key={user.id}>{user.name}</span>
+                                </div>
+                                <div className="col-sm-4 col-xs-4 pull-right sideBar-time">
+                                    <span className="time-meta pull-right">18:18</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </div>
 
