@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import '../App.css';
 import ComposeSideBar from "./partials/ComposeSideBar";
 import Conversation from "./partials/Conversation";
 import SideBar from "./partials/SideBar";
+import { GlobalContext } from "../Store/Globalstate";
 import socketIO from 'socket.io-client';
-const socket = socketIO.connect('http://localhost:8000');
+const socket = socketIO.connect('http://localhost:1200');
 
 function ChatPage() {
+    const { state, dispatch } = useContext(GlobalContext);
     const [sideTwoStyles, setSideTwoStyles] = useState({ left: "-100%" });
 
     useEffect(() => {
@@ -31,6 +33,7 @@ function ChatPage() {
     }, []);
 
     return (
+
         <div className="container app">
             <div className="row app-one">
                 <div className="col-sm-4 side">

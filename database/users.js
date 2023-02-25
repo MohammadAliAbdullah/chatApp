@@ -1,28 +1,14 @@
 module.exports = [
     {
         "id": 1,
-        "name": "Mohammad Ali Abdullah",
-        "username": "Abdullah",
+        "name": "Kazi Niger Afrose",
+        "username": "Afrose",
         "password": 123456,
-        "image": "https://bootdey.com/img/Content/avatar/avatar1.png",
+        "image": "https://bootdey.com/img/Content/avatar/avatar2.png",
     },
     {
         "id": 2,
-        "name": "Anamul Haque",
-        "username": "Anamul",
-        "password": 123456,
-        "image": "https://bootdey.com/img/Content/avatar/avatar1.png",
-    },
-    {
-        "id": 1,
-        "name": "Mohammad Ali Abdullah",
-        "username": "Abdullah",
-        "password": 123456,
-        "image": "https://bootdey.com/img/Content/avatar/avatar1.png",
-    },
-    {
-        "id": 2,
-        "name": "Anamul Haque",
+        "name": "Imamul Haque",
         "username": "Anamul",
         "password": 123456,
         "image": "https://bootdey.com/img/Content/avatar/avatar1.png",
@@ -43,8 +29,8 @@ module.exports = [
     },
     {
         "id": 5,
-        "name": "Mohammad Abdul Khalil",
-        "username": "Khalil",
+        "name": "Mohammad Abdul Jalil",
+        "username": "Jalil",
         "password": 123456,
         "image": "https://bootdey.com/img/Content/avatar/avatar1.png",
     },
@@ -103,7 +89,21 @@ module.exports = [
         "username": "Jahanara",
         "password": 123456,
         "image": "https://bootdey.com/img/Content/avatar/avatar1.png",
-    }
+    },
+    {
+        "id": 14,
+        "name": "Mohammad Ali Abdullah",
+        "username": "Abdullah",
+        "password": 123456,
+        "image": "https://bootdey.com/img/Content/avatar/avatar3.png",
+    },
+    {
+        "id": 15,
+        "name": "Anamul Haque Anamul",
+        "username": "Anamul",
+        "password": 123456,
+        "image": "https://bootdey.com/img/Content/avatar/avatar4.png",
+    },
 ];
 
 
