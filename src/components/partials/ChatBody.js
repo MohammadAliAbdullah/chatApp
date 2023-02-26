@@ -9,9 +9,8 @@ function ChatBody({ messages, chatWindowRef }) {
                     </a>
                 </div>
             </div>
-
             {messages.map(message => (
-                message.name === localStorage.getItem("userName") ? (
+                message.name === localStorage.getItem("username") ? (
                     <div className="row message-body" key={message.id}>
                         <div className="col-sm-12 message-main-sender">
                             <div className="sender">
