@@ -13,10 +13,10 @@ function SideBar({ socket }) {
         socket.on("allUsers", data => setAllUsers(data));
     }, [socket, users, allUsers])
 
-    const sendMessage = (userid, username) => {
+    const sendMessage = (receiverID, name) => {
         const data = {
-            id: userid,
-            name: username
+            receiverID: receiverID,
+            receiverName: name
         }
         dispatch({
             type: "CHAT_SEND",
@@ -53,7 +53,7 @@ function SideBar({ socket }) {
 
             <div className="row sideBar">
                 {allUsers.map(user =>
-                    <div className="row sideBar-body" style={user.id === state.id ? { backgroundColor: "#ccffcc" } : null}>
+                    <div className="row sideBar-body" style={user.id === state.receiverID ? { backgroundColor: "#ccffcc" } : null}>
                         {/* <button >Greet</button> */}
                         <div className="col-sm-3 col-xs-3 sideBar-avatar">
                             <div className="avatar-icon">

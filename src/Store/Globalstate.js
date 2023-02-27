@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from "react";
-const initialState = { id: 1, name: "Mohammad Ali Abdullah" };
+const initialState = { receiverID: 1, receiverName: "Kazi Niger Afrose" };
 // const initialState = {};
 
 const AppReducer = (state = initialState, action) => {

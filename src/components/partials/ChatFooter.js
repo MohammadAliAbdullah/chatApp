@@ -15,20 +15,17 @@ const ChatFooter = ({ }) => {
     // write of chat.
     const handleTyping = (event) => {
         const { value } = event.target;
-        setReceiverID(state.id);
+        setReceiverID(state.receiverID);
         setMessage(value);
-        alert(localStorage.getItem("senderID"));
-        alert(receiverID);
+        // alert(localStorage.getItem("senderID"));
         if (value) {
             setIsTyping(true);
-            socket.emit("typing", {senderID: localStorage.getItem("senderID"), receiverID: receiverID});
+            socket.emit("typing", { senderID: localStorage.getItem("senderID"), receiverID: state.receiverID });
             clearTimeout(timeoutId);
-
             const newTimeoutId = setTimeout(() => {
                 setIsTyping(false);
                 socket.emit("stop_typing");
             }, 1000);
-
             setTimeoutId(newTimeoutId);
         } else {
             setIsTyping(false);
@@ -57,10 +54,12 @@ const ChatFooter = ({ }) => {
 
         // console.log(formattedDate);
         const data = {
-            text: message,
-            name: localStorage.getItem("username"),
             id: `${socket.id}${Math.random()}`,
             socketID: socket.id,
+            name: localStorage.getItem("username"),
+            senderID: localStorage.getItem("senderID"),
+            receiverID: state.receiverID,
+            text: message,
             date: formattedDate,
             time: formattedTime,
         }

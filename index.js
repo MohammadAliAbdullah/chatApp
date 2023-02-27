@@ -31,14 +31,16 @@ io.on('connection', (socket) => {
     io.emit("messageResponse", data)
   })
   // start typing status 
-  socket.on("typing", () => {
-    socket.broadcast.emit("user_typing", socket.id);
+  socket.on("typing", ({ senderID, receiverID }) => {
+    console.log(senderID + '==' + receiverID);
+    socket.broadcast.emit("typing", receiverID);
+    // socket.to(receiverID).broadcast.emit("typing", senderID);
   });
   socket.on("stop_typing", () => {
-    socket.broadcast.emit("user_stop_typing", socket.id);
+    // socket.broadcast.emit("user_stop_typing", socket.id);
   });
   // end 
-  
+
   socket.on('disconnect', () => {
     console.log('🔥: A user disconnected');
   });
